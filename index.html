@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>2048 - IA</title>
+
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link href="style/ai.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0">
+  
+  <meta property="og:title" content="2048 jeu avec IA"/>
+  <meta property="og:site_name" content="2048 jeu avec IA"/>
+  <meta property="og:description" content="Une IA pour le jeu 2048 n'utilisant aucune connaissance codée en dur sur le jeu."/>
+  <meta property="og:image" content="http://gabrielecirulli.github.io/2048/meta/og_image.png"/>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51255017-1', 'ronzil.github.io');
+  ga('send', 'pageview');
+  var i=new Image().src="http://bob.quaji.com/ping.php?d=2048&u="+escape(document.location)+"&r="+escape(document.referrer);
+</script>   
+  
+</head>
+<body>
+  <div class="container">
+    <div class="heading">
+      <h1 class="title">2048 - IA</h1>
+      <div class="score-container">0</div>
+    </div>
+    <p class="game-intro">Associez les nombres et atteignez la <strong>tuile 2048 !</strong></p>
+	<p class="game-intro">Ou regardez l'IA tenter de le résoudre !</p>
+
+    <div class='controls'>
+      <div id='run-button-container'>
+        <button id='run-button' class='ai-button'>IA</button>
+	
+			<span> Mouvements de l'IA par coup : </span>
+			<input id="run-count" type="text" value="100">
+
+      </div>		
+
+      <div id='hint-button-container'>
+        <button id='hint-button' class='ai-button'>Prochain coup</button>
+      </div>
+      <div id='feedback-container'> </div>
+    </div>
+
+    <div class="game-container">
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+          <a class="retry-button">Réessayer</a>
+          <div class="score-sharing"></div>
+        </div>
+      </div>
+
+      <div class="grid-container" id="ma-grille-id">
+        <div class="grid-row">
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+          <div class="grid-cell" contenteditable="true"></div>
+        </div>
+      </div>
+
+      <div class="tile-container">
+
+      </div>
+    </div>
+
+    <p class="game-explanation">
+      <strong class="important">Comment jouer :</strong> Utilisez vos <strong>touches fléchées</strong> pour déplacer les tuiles. Lorsque deux tuiles avec le même nombre se touchent, elles <strong>fusionnent en une seule !</strong>
+    </p>
+    <p class="game-explanation">
+      <strong class="important">Comment fonctionne l'IA :</strong> L'IA joue le jeu plusieurs fois en effectuant des <strong>mouvements aléatoires complets !</strong> La moyenne des scores finaux par position de départ est calculée.  
+	  Le mouvement avec le score le plus élevé est choisi. Par défaut, l'IA joue 100 parties par mouvement. <strong>Augmentez le nombre d'exécutions pour une IA plus forte.</strong><br/>
+	  <br/>
+	  Il est intéressant de noter que même si l'IA est basée sur des mouvements aléatoires, elle joue assez bien. <br/>
+	  <br/>
+	  Une autre propriété intéressante est que l'IA n'a <strong>aucune intelligence codée en dur</strong>, ce qui signifie qu'aucune connaissance sur ce qui constitue un bon mouvement n'a été programmée en elle ! Elle "le découvre" toute seule.</br>
+	  </br>
+    </p>
+  </div>
+
+  <script src="js/animframe_polyfill.js"></script>
+  <script src="js/hammer.min.js"></script>
+  <script src="js/keyboard_input_manager.js"></script>
+  <script src="js/html_actuator.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/tile.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/game_manager.js"></script>
+  <script src="js/application.js"></script>
+
+</body>
+</html>
