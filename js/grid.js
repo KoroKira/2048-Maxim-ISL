@@ -627,26 +627,24 @@ Grid.prototype.updateLog = function (direction) {
 };
 
 
-
-function createMatrixFromGrid(grid) {
+Grid.prototype.createMatrixFromGrid = function() {
   var matrix = [];
-  for (var i = 0; i < grid.size; i++) {
+  for (var i = 0; i < this.size; i++) {
     var row = [];
-    for (var j = 0; j < grid.size; j++) {
-      // Use the cellContent method to get the value from the Grid
-      var cellValue = grid.cellOccupied({ x: i, y: j })
-        ? grid.cellContent({ x: i, y: j }).value
+    for (var j = 0; j < this.size; j++) {
+      var cellValue = this.cellOccupied({ x: i, y: j })
+        ? this.cellContent({ x: i, y: j }).value
         : 0;
       row.push(cellValue);
     }
     matrix.push(row);
   }
   return matrix;
-}
+};
 
 // Example: Assuming you have an instance of the Grid named "gameGrid"
-var gameGrid = Grid; // You might need to create the Grid instance first
-var matrix4x4 = createMatrixFromGrid(gameGrid);
+var gameGrid = new Grid(4);
+var matrix4x4 = gameGrid.createMatrixFromGrid();
 
 // Printing the updated matrix
 console.log(matrix4x4);
