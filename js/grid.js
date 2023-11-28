@@ -642,6 +642,8 @@ Grid.prototype.createMatrixFromGrid = function() {
   return matrix;
 };
 
+// Instanciation de la grille de jeu (par exemple, une grille de taille 4x4)
+var gameGrid = new Grid(4);
 // Assuming gameGrid is an instance of your Grid class
 var matrix4x4 = gameGrid.createMatrixFromGrid();
 renderMatrix(matrix4x4);
