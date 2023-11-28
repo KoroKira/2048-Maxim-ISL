@@ -625,3 +625,29 @@ Grid.prototype.updateLog = function (direction) {
     logElement.scrollTop = logElement.scrollHeight; // Fait défiler automatiquement vers le bas
   }
 };
+
+
+
+function createMatrixFromGrid(grid) {
+  var matrix = [];
+  for (var i = 0; i < grid.size; i++) {
+    var row = [];
+    for (var j = 0; j < grid.size; j++) {
+      // Use the cellContent method to get the value from the Grid
+      var cellValue = grid.cellOccupied({ x: i, y: j })
+        ? grid.cellContent({ x: i, y: j }).value
+        : 0;
+      row.push(cellValue);
+    }
+    matrix.push(row);
+  }
+  return matrix;
+}
+
+// Example: Assuming you have an instance of the Grid named "gameGrid"
+var gameGrid = new Grid(4); // You might need to create the Grid instance first
+var matrix4x4 = createMatrixFromGrid(gameGrid);
+
+// Printing the updated matrix
+console.log(matrix4x4);
+
