@@ -697,3 +697,20 @@ hr {
     opacity: 1;
     top: -45px;
     pointer-events: auto; }
+
+
+#matrix-container {
+  margin-top: 20px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
