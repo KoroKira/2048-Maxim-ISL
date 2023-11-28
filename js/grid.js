@@ -642,9 +642,25 @@ Grid.prototype.createMatrixFromGrid = function() {
   return matrix;
 };
 
-// Example: Assuming you have an instance of the Grid named "gameGrid"
-var gameGrid = new Grid(4);
+// Assuming gameGrid is an instance of your Grid class
 var matrix4x4 = gameGrid.createMatrixFromGrid();
+renderMatrix(matrix4x4);
 
-// Printing the updated matrix
-console.log(matrix4x4);
+function renderMatrix(matrix) {
+  var container = document.getElementById("matrix-container");
+  container.innerHTML = ""; // Clear previous content
+
+  var table = document.createElement("table");
+  matrix.forEach(function (row) {
+    var tr = document.createElement("tr");
+    row.forEach(function (value) {
+      var td = document.createElement("td");
+      td.textContent = value;
+      tr.appendChild(td);
+    });
+    table.appendChild(tr);
+  });
+
+  container.appendChild(table);
+}
+
