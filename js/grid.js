@@ -627,7 +627,7 @@ Grid.prototype.updateLog = function (direction) {
 };
 
 
-Grid.prototype.createMatrixFromGrid = function() {
+Grid.prototype.createMatrixFromGrid = function () {
   var matrix = [];
   for (var i = 0; i < this.size; i++) {
     var row = [];
@@ -641,6 +641,7 @@ Grid.prototype.createMatrixFromGrid = function() {
   }
   return matrix;
 };
+
 
 // Instanciation de la grille de jeu (par exemple, une grille de taille 4x4)
 var gameGrid = new Grid(4);
