@@ -645,9 +645,8 @@ function createMatrixFromGrid(grid) {
 }
 
 // Example: Assuming you have an instance of the Grid named "gameGrid"
-var gameGrid = new Grid(4); // You might need to create the Grid instance first
+var gameGrid = Grid; // You might need to create the Grid instance first
 var matrix4x4 = createMatrixFromGrid(gameGrid);
 
 // Printing the updated matrix
 console.log(matrix4x4);
-
