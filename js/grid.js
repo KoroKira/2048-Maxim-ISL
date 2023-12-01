@@ -627,43 +627,4 @@ Grid.prototype.updateLog = function (direction) {
 };
 
 
-Grid.prototype.createMatrixFromGrid = function () {
-  var matrix = [];
-  for (var i = 0; i < this.size; i++) {
-    var row = [];
-    for (var j = 0; j < this.size; j++) {
-      var cellValue = this.cellOccupied({ x: i, y: j })
-        ? this.cellContent({ x: i, y: j }).value
-        : 0;
-      row.push(cellValue);
-    }
-    matrix.push(row);
-  }
-  return matrix;
-};
-
-
-// Instanciation de la grille de jeu (par exemple, une grille de taille 4x4)
-var gameGrid = new Grid(4);
-// Assuming gameGrid is an instance of your Grid class
-var matrix4x4 = gameGrid.createMatrixFromGrid();
-renderMatrix(matrix4x4);
-
-function renderMatrix(matrix) {
-  var container = document.getElementById("matrix-container");
-  container.innerHTML = ""; // Clear previous content
-
-  var table = document.createElement("table");
-  matrix.forEach(function (row) {
-    var tr = document.createElement("tr");
-    row.forEach(function (value) {
-      var td = document.createElement("td");
-      td.textContent = value;
-      tr.appendChild(td);
-    });
-    table.appendChild(tr);
-  });
-
-  container.appendChild(table);
-}
 
