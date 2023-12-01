@@ -224,7 +224,7 @@ Grid.prototype.move = function (direction) {
         var next      = self.cellContent(positions.next);
 
         // Only one merger per row traversal?
-        if (next && next.value === tile.value && !next.mergedFrom) {
+        if (next && next.value === tile.value && !next.mergedFrom && tile.value !== 11) {
           var merged = new Tile(positions.next, tile.value + 1);
           merged.mergedFrom = [tile, next];
 
@@ -238,7 +238,7 @@ Grid.prototype.move = function (direction) {
           score += merged.value;
 
           // The mighty 2048 tile
-          if (merged.value === 2048) {
+          if (merged.value === 11) {
             won = true;
           }
         } else {
@@ -625,6 +625,5 @@ Grid.prototype.updateLog = function (direction) {
     logElement.scrollTop = logElement.scrollHeight; // Fait défiler automatiquement vers le bas
   }
 };
-
 
 
